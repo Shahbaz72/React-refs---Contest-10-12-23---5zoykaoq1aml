@@ -7,12 +7,17 @@ const App = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [displayedEmail, setDisplayedEmail] = useState('');
+  const [displayedPassword, setDisplayedPassword] = useState('');
 
   const handleSubmit = () => {
     if (!email) {
       inputEmailRef.current.focus();
     } else if (!password) {
       inputPasswordRef.current.focus();
+    } else {
+      setDisplayedEmail(email);
+      setDisplayedPassword(password);
     }
   };
 
@@ -35,8 +40,8 @@ const App = () => {
         onChange={(e) => setPassword(e.target.value)}
       /><br/>
       <button id="submitButton" onClick={handleSubmit}>Submit</button><br/>
-      <p id="emailText">Your Email : {email}</p>
-      <p id="passwordText">Your Password : {password}</p>
+      <p id="emailText">Your Email : {displayedEmail}</p>
+      <p id="passwordText">Your Password : {displayedPassword}</p>
     </div>
   );
 };
